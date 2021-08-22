@@ -1,0 +1,36 @@
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background: #4d5e67;
+  --black: #202020;
+  --green: #50c15b;
+  --lightGreen: #75d07e;
+  --blue: #7ec1ff;
+  --lightBlue: #90c2f0;
+  --pink: #c758c5;
+  --lightPink: #ef91ed;
+  --borderRadius: 10px;
+  --boxShadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: var(--background);
+}
