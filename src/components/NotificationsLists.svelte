@@ -13,7 +13,7 @@
 <div class="notifications-wrapper">
   <div class="list-wrapper">
     <div class="input-wrapper">
-      <label for="debounceDelay">Debounce delay (ms):</label>
+      <label for="debounceDelay"><span class="green">Debounce</span> delay (ms):</label>
       <input
         bind:value={debounceDelay}
         type="number"
@@ -45,7 +45,7 @@
   </div>
   <div class="list-wrapper">
     <div class="input-wrapper">
-      <label for="throttleDelay">Throttle delay (ms):</label>
+      <label for="throttleDelay"><span class="pink">Throttle</span> delay (ms):</label>
       <input
         bind:value={throttleDelay}
         type="number"
@@ -71,7 +71,7 @@
   .notifications-wrapper {
     display: flex;
     justify-content: space-around;
-    margin-top: 7rem;
+    margin-top: 4rem;
     width: 100%;
     overflow: hidden;
   }
@@ -91,6 +91,13 @@
     label {
       font-size: 1.6rem;
       color: white;
+
+      .green {
+        color: var(--lightGreen);
+      }
+      .pink {
+        color: var(--lightPink);
+      }
     }
 
     input {
@@ -110,7 +117,7 @@
   ul {
     width: 100%;
     list-style-type: none;
-    max-height: 800px;
+    height: 700px;
     overflow-y: auto;
     padding-right: 1rem;
 

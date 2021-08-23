@@ -20,11 +20,14 @@
     />
     <button on:click={handleResetClick}>reset&nbsp;input</button>
   </div>
+  <p>
+    Implementation <span>code</span> and explanation below.
+  </p>
 </div>
 
 <style type="text/scss">
   .input-section {
-    margin-top: 8rem;
+    margin-top: 6rem;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -35,6 +38,16 @@
     text-align: center;
     font-size: 1.8rem;
     line-height: 2.2rem;
+    text-align: center;
+    color: var(--lightBlue);
+    width: 100%;
+  }
+
+  p {
+    margin-top: 4rem;
+    text-align: center;
+    font-size: 1.6rem;
+    line-height: 2rem;
     text-align: center;
     color: #ffffff;
     width: 100%;
