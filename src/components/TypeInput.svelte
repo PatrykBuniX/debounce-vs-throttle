@@ -68,6 +68,7 @@
       color: var(--black);
       border-radius: var(--borderRadius);
       box-shadow: var(--boxShadow);
+      background-color: var(--blue);
     }
   }
 </style>
