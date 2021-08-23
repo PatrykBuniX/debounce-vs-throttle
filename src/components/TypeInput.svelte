@@ -1,6 +1,6 @@
 <script lang="ts">
   export let inputValue: string;
-  export let handleInput: (e: Event) => void;
+  export let handleInput: () => void;
 
   function handleResetClick() {
     inputValue = "";
@@ -48,12 +48,13 @@
       width: 100%;
       border-radius: var(--borderRadius);
       border: none;
-      background: #f3f3f3;
+      background: var(--white);
       box-shadow: var(--boxShadow);
       padding: 0.7rem 1.8rem;
       font-size: 1.8rem;
       line-height: 2.2rem;
       color: var(--black);
+      font-family: var(--montserrat);
     }
 
     button {
@@ -68,6 +69,7 @@
       color: var(--black);
       border-radius: var(--borderRadius);
       box-shadow: var(--boxShadow);
+      font-family: var(--montserrat);
       background-color: var(--blue);
     }
   }

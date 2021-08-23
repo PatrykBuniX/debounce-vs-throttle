@@ -1,37 +1,70 @@
 <script lang="ts">
-  import { slide, fly, fade } from "svelte/transition";
+  import { slide, fade } from "svelte/transition";
   import type { Notification } from "../types";
 
   export let debouncedNotifications: Notification[];
   export let normalNotifications: Notification[];
   export let throttledNotifications: Notification[];
+
+  export let debounceDelay: number;
+  export let throttleDelay: number;
 </script>
 
 <div class="notifications-wrapper">
-  <ul class="debounced">
-    {#each debouncedNotifications as item (item.id)}
-      <li in:slide|local out:fade={{ duration: 500 }}>
-        <h3>Debounced</h3>
-        <p>{item.text}</p>
-      </li>
-    {/each}
-  </ul>
-  <ul class="normal">
-    {#each normalNotifications as item (item.id)}
-      <li in:slide|local out:fade={{ duration: 500 }}>
-        <h3>Normal</h3>
-        <p>{item.text}</p>
-      </li>
-    {/each}
-  </ul>
-  <ul class="throttled">
-    {#each throttledNotifications as item (item.id)}
-      <li in:slide|local out:fade={{ duration: 500 }}>
-        <h3>Throttled</h3>
-        <p>{item.text}</p>
-      </li>
-    {/each}
-  </ul>
+  <div class="list-wrapper">
+    <div class="input-wrapper">
+      <label for="debounceDelay">Debounce delay (ms):</label>
+      <input
+        bind:value={debounceDelay}
+        type="number"
+        name="debounceDelay"
+        id="debounceDelay"
+        min="0"
+        max="100000"
+        step="10"
+      />
+    </div>
+    <ul class="debounced">
+      {#each debouncedNotifications as item (item.id)}
+        <li in:slide|local out:fade={{ duration: 500 }}>
+          <h3>Debounced</h3>
+          <p>{item.text}</p>
+        </li>
+      {/each}
+    </ul>
+  </div>
+  <div class="list-wrapper">
+    <ul class="normal">
+      {#each normalNotifications as item (item.id)}
+        <li in:slide|local out:fade={{ duration: 500 }}>
+          <h3>Normal</h3>
+          <p>{item.text}</p>
+        </li>
+      {/each}
+    </ul>
+  </div>
+  <div class="list-wrapper">
+    <div class="input-wrapper">
+      <label for="throttleDelay">Throttle delay (ms):</label>
+      <input
+        bind:value={throttleDelay}
+        type="number"
+        name="throttleDelay"
+        id="throttleDelay"
+        min="0"
+        max="100000"
+        step="10"
+      />
+    </div>
+    <ul class="throttled">
+      {#each throttledNotifications as item (item.id)}
+        <li in:slide|local out:fade={{ duration: 500 }}>
+          <h3>Throttled</h3>
+          <p>{item.text}</p>
+        </li>
+      {/each}
+    </ul>
+  </div>
 </div>
 
 <style type="text/scss">
@@ -43,15 +76,43 @@
     overflow: hidden;
   }
 
-  ul {
+  .list-wrapper {
     flex: 1;
-    list-style-type: none;
     max-width: 350px;
-    position: relative;
     margin: 0 2rem;
+  }
+
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-items: center;
+
+    label {
+      font-size: 1.6rem;
+      color: white;
+    }
+
+    input {
+      margin-top: 1rem;
+      background-color: var(--white);
+      border-radius: var(--borderRadius);
+      border: none;
+      box-shadow: var(--boxShadow);
+      padding: 0.7rem 1.8rem;
+      font-size: 1.8rem;
+      line-height: 2.2rem;
+      color: var(--black);
+      font-family: var(--montserrat);
+    }
+  }
+
+  ul {
+    width: 100%;
+    list-style-type: none;
     max-height: 800px;
     overflow-y: auto;
-    padding: 0 1rem;
+    padding-right: 1rem;
 
     &::-webkit-scrollbar {
       width: 10px;

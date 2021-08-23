@@ -6,6 +6,8 @@
   import type { Notification } from "./types";
 
   let inputValue = "";
+  let debounceDelay = 1000;
+  let throttleDelay = 1000;
 
   let debouncedNotifications: Notification[] = [];
   let normalNotifications: Notification[] = [];
@@ -19,11 +21,10 @@
     return newNotifications;
   }
 
-  function handleInput(e: Event) {
-    const { value } = <HTMLInputElement>e.currentTarget;
+  function handleInput() {
     const newNotification = {
       id: Math.random().toString(36).substr(2, 9),
-      text: `Input value: ${value}`,
+      text: `Input value: ${inputValue}`,
     };
 
     debounce(() => {
@@ -31,7 +32,7 @@
       setTimeout(() => {
         debouncedNotifications = deleteNotification(debouncedNotifications, newNotification.id);
       }, 5000);
-    }, 1000);
+    }, debounceDelay);
 
     normalNotifications = [newNotification, ...normalNotifications];
     setTimeout(() => {
@@ -43,14 +44,20 @@
       setTimeout(() => {
         throttledNotifications = deleteNotification(throttledNotifications, newNotification.id);
       }, 5000);
-    }, 1000);
+    }, throttleDelay);
   }
 </script>
 
 <main>
   <Heading />
-  <TypeInput {inputValue} {handleInput} />
-  <NotificationsLists {debouncedNotifications} {normalNotifications} {throttledNotifications} />
+  <TypeInput bind:inputValue {handleInput} />
+  <NotificationsLists
+    {debouncedNotifications}
+    {normalNotifications}
+    {throttledNotifications}
+    bind:debounceDelay
+    bind:throttleDelay
+  />
 </main>
 
 <style type="text/scss">
