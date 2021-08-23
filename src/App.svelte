@@ -2,6 +2,7 @@
   import Heading from "./components/Heading.svelte";
   import TypeInput from "./components/TypeInput.svelte";
   import NotificationsLists from "./components/NotificationsLists.svelte";
+  import { debounce, throttle } from "./utils";
   import type { Notification } from "./types";
 
   let inputValue = "";
@@ -9,23 +10,6 @@
   let debouncedNotifications: Notification[] = [];
   let normalNotifications: Notification[] = [];
   let throttledNotifications: Notification[] = [];
-
-  let throttleTimeoutId: ReturnType<typeof setTimeout>;
-  function throttle(func: () => void, delay: number) {
-    if (throttleTimeoutId) return;
-    func();
-    throttleTimeoutId = setTimeout(() => {
-      throttleTimeoutId = undefined;
-    }, delay);
-  }
-
-  let debouncedTimeoutId: ReturnType<typeof setTimeout>;
-  function debounce(func: () => void, delay: number) {
-    clearTimeout(debouncedTimeoutId);
-    debouncedTimeoutId = setTimeout(() => {
-      func();
-    }, delay);
-  }
 
   function deleteNotification(group: Notification[], id: string) {
     const removeIndex = group.findIndex((el) => el.id === id);
