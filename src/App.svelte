@@ -31,7 +31,7 @@
     const removeIndex = group.findIndex((el) => el.id === id);
     if (removeIndex === -1) return;
     const newNotifications = [...group];
-    delete newNotifications.splice(removeIndex, 1)[0];
+    newNotifications.splice(removeIndex, 1);
     return newNotifications;
   }
 
