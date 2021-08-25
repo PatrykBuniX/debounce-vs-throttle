@@ -21,7 +21,8 @@
     <button on:click={handleResetClick}>reset&nbsp;input</button>
   </div>
   <p>
-    <a href="#code-section">Implementation code</a> and explanation below.
+    <a href="#code-section">Implementation code</a> and
+    <a href="#explanation-section">explanation</a> below.
   </p>
 </div>
 
@@ -53,7 +54,7 @@
     width: 100%;
 
     a {
-      color: white;
+      color: var(--white);
 
       &:hover {
         color: var(--lightBlue);

@@ -42,7 +42,6 @@ export function throttle(func: () => void, delay: number) {
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
-    border-radius: var(--borderRadius);
     padding: 10rem 2rem;
     max-width: 1440px;
   }

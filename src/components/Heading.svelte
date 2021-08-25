@@ -20,14 +20,6 @@
     line-height: 6.3rem;
     color: var(--blue);
     text-shadow: 1px 1px 0px #ffffff;
-
-    .green {
-      color: var(--green);
-    }
-
-    .pink {
-      color: var(--pink);
-    }
   }
 
   .subheader {
