@@ -105,7 +105,7 @@
       background-color: var(--white);
       border-radius: var(--borderRadius);
       border: none;
-      box-shadow: var(--boxShadow);
+      box-shadow: var(--boxShadowBottom);
       padding: 0.7rem 1.8rem;
       font-size: 1.8rem;
       line-height: 2.2rem;
@@ -163,7 +163,7 @@
     li {
       width: 100%;
       padding: 1rem;
-      box-shadow: var(--boxShadow);
+      box-shadow: var(--boxShadowBottom);
       border-radius: var(--borderRadius);
       margin: 2rem 0;
 

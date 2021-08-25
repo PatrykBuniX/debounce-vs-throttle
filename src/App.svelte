@@ -4,6 +4,7 @@
   import NotificationsLists from "./components/NotificationsLists.svelte";
   import { debounce, throttle } from "./utils";
   import type { Notification } from "./types";
+  import CodeSection from "./components/CodeSection.svelte";
 
   let inputValue = "";
   let debounceDelay = 1000;
@@ -59,6 +60,7 @@
     bind:throttleDelay
   />
 </main>
+<CodeSection />
 
 <style type="text/scss">
   main {

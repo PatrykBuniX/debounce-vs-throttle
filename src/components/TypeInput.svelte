@@ -21,7 +21,7 @@
     <button on:click={handleResetClick}>reset&nbsp;input</button>
   </div>
   <p>
-    Implementation <span>code</span> and explanation below.
+    <a href="#code-section">Implementation code</a> and explanation below.
   </p>
 </div>
 
@@ -51,6 +51,14 @@
     text-align: center;
     color: #ffffff;
     width: 100%;
+
+    a {
+      color: white;
+
+      &:hover {
+        color: var(--lightBlue);
+      }
+    }
   }
 
   .inputs-wrapper {
@@ -62,7 +70,7 @@
       border-radius: var(--borderRadius);
       border: none;
       background: var(--white);
-      box-shadow: var(--boxShadow);
+      box-shadow: var(--boxShadowBottom);
       padding: 0.7rem 1.8rem;
       font-size: 1.8rem;
       line-height: 2.2rem;
@@ -81,7 +89,7 @@
       padding: 0.7rem 1.8rem;
       color: var(--black);
       border-radius: var(--borderRadius);
-      box-shadow: var(--boxShadow);
+      box-shadow: var(--boxShadowBottom);
       font-family: var(--montserrat);
       background-color: var(--blue);
     }
