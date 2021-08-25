@@ -41,17 +41,15 @@ export function throttle(func: () => void, delay: number) {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--white);
     margin: 0 auto;
     border-radius: var(--borderRadius);
     padding: 10rem 2rem;
     max-width: 1440px;
-    box-shadow: 0px 0px 5px var(--black);
   }
 
   h2 {
     font-size: 4rem;
-    color: var(--black);
+    color: var(--white);
   }
 
   .code-section-wrapper {
@@ -63,8 +61,6 @@ export function throttle(func: () => void, delay: number) {
   }
 
   .code-section {
-    box-shadow: var(--boxShadow);
-    border-radius: var(--borderRadius);
     margin: 2rem;
     padding: 2rem;
     display: flex;
