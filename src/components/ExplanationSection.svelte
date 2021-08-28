@@ -36,7 +36,7 @@
     </p>
     <p>
       This is only one of many examples you can use debounce in - basicly you will use it in event
-      handlers that run frequently (keyboard and mouse events, window resizing, ect.).
+      handlers that run frequently (keyboard and mouse events, window resizing, etc.).
     </p>
     <p>Let me explain implementation code line by line:</p>
     <ol>
@@ -78,7 +78,10 @@
       elapse before it can be executed again. So when user is typing for a while, the function will
       run only if it's not blocked.
     </p>
-    <p>With throttle you can listen for continuous events (like scrolling or window resizing) and run your function less frequently.</p>
+    <p>
+      With throttle you can listen for continuous events (like scrolling or window resizing) and run
+      your function less frequently.
+    </p>
     <p>Line by line explanation:</p>
     <ol>
       <li>
@@ -102,16 +105,16 @@
         </ul>
       </li>
       <li>If there is running timeout - return (do nothing)</li>
-      <li>If not - run the function.</li>
+      <li>Run the function.*</li>
       <li>
         Assign new timeout id to <pre>throttleTimeoutId</pre>
         variable and reset it (assign undefined to it) after given delay.
       </li>
     </ol>
     <p>
-      Some people will put function call inside timeout callback function, but in my opinion there
-      is better user experience when you run the function first and then block it so you don't make
-      the user wait.
+      *Some people will put function call inside timeout callback function, but in my opinion it's
+      better user experience when you run the function first and then block it so you don't make the
+      user wait.
     </p>
     <h3>4. <span class="lightBlue">Wrap it up!</span></h3>
     <p>
@@ -149,12 +152,12 @@
   }
 
   h3 {
-    margin: 2rem 0;
+    margin: 6rem 0 2rem 0;
     font-size: 2.8rem;
   }
 
   p {
-    margin-top: 1rem;
+    margin-top: 2rem;
     font-size: 1.6rem;
   }
 
