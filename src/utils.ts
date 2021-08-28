@@ -10,7 +10,5 @@ export function throttle(func: () => void, delay: number) {
 let debouncedTimeoutId: ReturnType<typeof setTimeout>;
 export function debounce(func: () => void, delay: number) {
   clearTimeout(debouncedTimeoutId);
-  debouncedTimeoutId = setTimeout(() => {
-    func();
-  }, delay);
+  debouncedTimeoutId = setTimeout(func, delay);
 }
