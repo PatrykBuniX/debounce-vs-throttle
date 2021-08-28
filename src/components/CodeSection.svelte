@@ -42,6 +42,7 @@ export function throttle(func: () => void, delay: number) {
     margin: 0 auto;
     padding: 10rem 2rem;
     max-width: 1440px;
+    background-color: #404c52;
   }
 
   h2 {
