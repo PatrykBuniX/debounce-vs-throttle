@@ -78,6 +78,7 @@
       elapse before it can be executed again. So when user is typing for a while, the function will
       run only if it's not blocked.
     </p>
+    <p>With throttle you can listen for continuous events (like scrolling or window resizing) and run your function less frequently.</p>
     <p>Line by line explanation:</p>
     <ol>
       <li>
