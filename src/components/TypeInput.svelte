@@ -10,6 +10,7 @@
 <div class="input-section">
   <label for="typeInput">Start typing in input below to fire events:</label>
   <div class="inputs-wrapper">
+    <button on:click={handleResetClick}>reset&nbsp;input</button>
     <input
       bind:value={inputValue}
       on:input={handleInput}
@@ -18,7 +19,6 @@
       id="typeInput"
       placeholder="Your text goes here..."
     />
-    <button on:click={handleResetClick}>reset&nbsp;input</button>
   </div>
 </div>
 
@@ -68,7 +68,7 @@
       box-shadow: var(--boxShadowBottom);
       font-family: var(--montserrat);
       background-color: var(--blue);
-      margin: 2rem auto 0 auto;
+      margin: 0 auto 1rem auto;
       padding: 0.25rem 0.75rem;
 
       @media screen and (min-width: 768px) {
