@@ -24,12 +24,12 @@ export function throttle(func: () => void, delay: number) {
   <div class="bg-pattern" />
   <article>
     <h2>Implementation code</h2>
-    <div class="code-section-wrapper">
-      <div class="code-section debounce">
+    <div class="code-wrapper">
+      <div class="code debounce">
         <h3>Debounce</h3>
         <PrismCode code={debounceCode} />
       </div>
-      <div class="code-section throttle">
+      <div class="code throttle">
         <h3>Throttle</h3>
         <PrismCode code={throttleCode} />
       </div>
@@ -60,7 +60,7 @@ export function throttle(func: () => void, delay: number) {
     color: var(--white);
   }
 
-  .code-section-wrapper {
+  .code-wrapper {
     margin-top: 6rem;
     width: 100%;
     display: flex;
@@ -68,10 +68,11 @@ export function throttle(func: () => void, delay: number) {
     justify-content: space-around;
   }
 
-  .code-section {
+  .code {
     width: 100%;
     margin: 2rem 0;
     @media screen and (min-width: 768px) {
+      width: auto;
       margin: 2rem;
       padding: 2rem;
     }
