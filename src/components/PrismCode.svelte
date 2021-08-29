@@ -24,6 +24,6 @@
   }
 
   code {
-    font-size: 1.6rem;
+    font-size: var(--fontSizeText);
   }
 </style>

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import PrismCode from "./PrismCode.svelte";
 </script>
 
 <section id="explanation-section">
@@ -142,7 +141,7 @@
   }
 
   h2 {
-    font-size: 4rem;
+    font-size: var(--fontSizeH2);
     color: var(--white);
     padding-bottom: 2rem;
     text-align: center;
@@ -150,12 +149,13 @@
 
   h3 {
     margin: 6rem 0 2rem 0;
-    font-size: 2.8rem;
+    font-size: var(--fontSizeH3);
   }
 
   p {
     margin-top: 2rem;
-    font-size: 1.6rem;
+    line-height: var(--fontSizeTextBig);
+    font-size: var(--fontSizeText);
   }
 
   ol,
@@ -176,7 +176,7 @@
   }
 
   li {
-    font-size: 1.6rem;
+    font-size: var(--fontSizeText);
   }
 
   pre {

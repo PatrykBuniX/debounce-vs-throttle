@@ -51,6 +51,10 @@
 <main>
   <Heading />
   <TypeInput bind:inputValue {handleInput} />
+  <p>
+    <a href="#code-section">Implementation code</a> and
+    <a href="#explanation-section">explanation</a> below.
+  </p>
   <NotificationsLists
     {debouncedNotifications}
     {normalNotifications}
@@ -64,9 +68,35 @@
   main {
     margin: 0 auto;
     max-width: 1440px;
-    padding: 4rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 2rem;
+
+    @media screen and (min-width: 768px) {
+      padding: 4rem;
+    }
+  }
+
+  p {
+    order: 1;
+    @media screen and (min-width: 768px) {
+      order: 3;
+    }
+    margin-top: 4rem;
+    text-align: center;
+    font-size: var(--fontSizeText);
+    line-height: 2rem;
+    text-align: center;
+    color: #ffffff;
+    width: 100%;
+
+    a {
+      color: var(--white);
+
+      &:hover {
+        color: var(--lightBlue);
+      }
+    }
   }
 </style>

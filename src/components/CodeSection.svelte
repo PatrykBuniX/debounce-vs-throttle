@@ -52,7 +52,7 @@ export function throttle(func: () => void, delay: number) {
 
   h2 {
     text-align: center;
-    font-size: 4rem;
+    font-size: var(--fontSizeH2);
     color: var(--white);
   }
 
@@ -83,7 +83,7 @@ export function throttle(func: () => void, delay: number) {
     }
 
     h3 {
-      font-size: 1.8rem;
+      font-size: var(--fontSizeTextMedium);
       margin-bottom: 1rem;
     }
   }

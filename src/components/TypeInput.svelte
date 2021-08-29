@@ -20,10 +20,6 @@
     />
     <button on:click={handleResetClick}>reset&nbsp;input</button>
   </div>
-  <p>
-    <a href="#code-section">Implementation code</a> and
-    <a href="#explanation-section">explanation</a> below.
-  </p>
 </div>
 
 <style type="text/scss">
@@ -33,33 +29,16 @@
     flex-direction: column;
     width: 100%;
     max-width: 400px;
+    order: 2;
   }
 
   label {
     text-align: center;
-    font-size: 1.8rem;
+    font-size: var(--fontSizeTextMedium);
     line-height: 2.2rem;
     text-align: center;
     color: var(--lightBlue);
     width: 100%;
-  }
-
-  p {
-    margin-top: 4rem;
-    text-align: center;
-    font-size: 1.6rem;
-    line-height: 2rem;
-    text-align: center;
-    color: #ffffff;
-    width: 100%;
-
-    a {
-      color: var(--white);
-
-      &:hover {
-        color: var(--lightBlue);
-      }
-    }
   }
 
   .inputs-wrapper {
@@ -73,26 +52,33 @@
       background: var(--white);
       box-shadow: var(--boxShadowBottom);
       padding: 0.7rem 1.8rem;
-      font-size: 1.8rem;
+      font-size: var(--fontSizeTextMedium);
       line-height: 2.2rem;
       color: var(--black);
       font-family: var(--montserrat);
     }
 
     button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 1.8rem;
+      display: block;
+      font-size: var(--fontSizeTextMedium);
       line-height: 2.2rem;
       border: none;
-      margin-left: 2rem;
-      padding: 0.7rem 1.8rem;
       color: var(--black);
       border-radius: var(--borderRadius);
       box-shadow: var(--boxShadowBottom);
       font-family: var(--montserrat);
       background-color: var(--blue);
+      margin: 2rem auto 0 auto;
+      padding: 0.25rem 0.75rem;
+
+      @media screen and (min-width: 768px) {
+        position: absolute;
+        padding: 0.7rem 1.8rem;
+        left: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0 0 0 2rem;
+      }
     }
   }
 </style>

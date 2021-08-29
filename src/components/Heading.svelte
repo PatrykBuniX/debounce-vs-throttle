@@ -11,12 +11,13 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    order: 1;
   }
 
   .header {
     font-style: italic;
     font-weight: bold;
-    font-size: 5.2rem;
+    font-size: var(--fontSizeH1);
     line-height: 6.3rem;
     color: var(--blue);
     text-shadow: 1px 1px 0px #ffffff;
@@ -25,7 +26,7 @@
   .subheader {
     font-style: italic;
     font-weight: normal;
-    font-size: 2.8rem;
+    font-size: var(--fontSizeH3);
     line-height: 3.4rem;
     color: #ffffff;
   }

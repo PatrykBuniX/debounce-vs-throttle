@@ -20,6 +20,23 @@
   --boxShadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
   --boxShadowBottom: 0px 4px 4px rgba(0, 0, 0, 0.25);
   --montserrat: "Montserrat", sans-serif;
+  --fontSizeText: 1.4rem;
+  --fontSizeTextMedium: 1.6rem;
+  --fontSizeTextBig: 1.8rem;
+  --fontSizeH1: 4rem;
+  --fontSizeH2: 3rem;
+  --fontSizeH3: 2rem;
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --fontSizeText: 1.6rem;
+    --fontSizeTextMedium: 1.8rem;
+    --fontSizeTextBig: 2rem;
+    --fontSizeH1: 5.2rem;
+    --fontSizeH2: 4rem;
+    --fontSizeH3: 2.8rem;
+  }
 }
 
 html {
