@@ -2,6 +2,7 @@
 </script>
 
 <section id="explanation-section">
+  <div class="bg-pattern" />
   <article>
     <h2>How it works?</h2>
     <h3>1. <span class="lightBlue">Introduction</span></h3>
@@ -130,6 +131,8 @@
     margin: 0 auto;
     padding: 10rem 2rem;
     background-color: #333d42;
+    position: relative;
+    z-index: 1;
   }
 
   article {

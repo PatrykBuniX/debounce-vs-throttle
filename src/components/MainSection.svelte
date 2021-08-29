@@ -49,33 +49,41 @@
 </script>
 
 <main>
-  <Heading />
-  <TypeInput bind:inputValue {handleInput} />
-  <p>
-    <a href="#code-section">Implementation code</a> and
-    <a href="#explanation-section">explanation</a> below.
-  </p>
-  <NotificationsLists
-    {debouncedNotifications}
-    {normalNotifications}
-    {throttledNotifications}
-    bind:debounceDelay
-    bind:throttleDelay
-  />
+  <div class="bg-pattern" />
+  <div class="content">
+    <Heading />
+    <TypeInput bind:inputValue {handleInput} />
+    <p>
+      <a href="#code-section">Implementation code</a> and
+      <a href="#explanation-section">explanation</a> below.
+    </p>
+    <NotificationsLists
+      {debouncedNotifications}
+      {normalNotifications}
+      {throttledNotifications}
+      bind:debounceDelay
+      bind:throttleDelay
+    />
+  </div>
 </main>
 
 <style type="text/scss">
   main {
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+
+    @media screen and (min-width: 768px) {
+      padding: 4rem;
+    }
+  }
+
+  .content {
     margin: 0 auto;
     max-width: 1440px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2rem;
-
-    @media screen and (min-width: 768px) {
-      padding: 4rem;
-    }
   }
 
   p {

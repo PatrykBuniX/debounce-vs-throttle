@@ -21,6 +21,7 @@ export function throttle(func: () => void, delay: number) {
 </script>
 
 <section id="code-section">
+  <div class="bg-pattern" />
   <article>
     <h2>Implementation code</h2>
     <div class="code-section-wrapper">
@@ -44,6 +45,8 @@ export function throttle(func: () => void, delay: number) {
     margin: 0 auto;
     padding: 10rem 2rem;
     background-color: #404c52;
+    position: relative;
+    z-index: 1;
   }
 
   article {
