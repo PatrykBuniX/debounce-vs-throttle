@@ -47,6 +47,7 @@ export function throttle(func: () => void, delay: number) {
   }
 
   article {
+    width: 100%;
     max-width: 1440px;
   }
 
@@ -65,8 +66,12 @@ export function throttle(func: () => void, delay: number) {
   }
 
   .code-section {
-    margin: 2rem;
-    padding: 2rem;
+    width: 100%;
+    margin: 2rem 0;
+    @media screen and (min-width: 768px) {
+      margin: 2rem;
+      padding: 2rem;
+    }
     display: flex;
     flex-direction: column;
     align-items: center;

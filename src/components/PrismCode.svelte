@@ -13,14 +13,19 @@
 
 <pre
   class="line-numbers">
-    <code bind:this={ref} class={`language-${language}`}>
-      {code.trim()}
-    </code>
+      <code bind:this={ref} class={`language-${language}`}>
+        {code.trim()}
+      </code>
 </pre>
 
 <style lang="scss">
   pre {
-    border-radius: var(--borderRadius);
+    width: 100%;
+    overflow: auto;
+
+    @media screen and (min-width: 768px) {
+      border-radius: var(--borderRadius);
+    }
   }
 
   code {
