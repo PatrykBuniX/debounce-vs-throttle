@@ -1,4 +1,4 @@
-# debounce-vs-throttle
+# <span style="color: #50c15b;">Debounce</span> <span style="color: #7ec1ff;">vs</span> <span style="color: #c758c5;">Throttle</span>
 
 ## Get started
 
