@@ -24,7 +24,7 @@
   function handleInput() {
     const newNotification = {
       id: Math.random().toString(36).substr(2, 9),
-      text: `Input value: ${inputValue}`,
+      text: inputValue,
     };
 
     debounce(() => {
