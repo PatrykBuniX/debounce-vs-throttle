@@ -134,8 +134,15 @@
     align-items: center;
     margin: 0 auto;
     padding: 10rem 2rem;
-    max-width: 1440px;
     background-color: #333d42;
+  }
+
+  article {
+    max-width: 1440px;
+    color: var(--white);
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
   }
 
   h2 {
@@ -143,13 +150,6 @@
     color: var(--white);
     padding-bottom: 2rem;
     text-align: center;
-  }
-
-  article {
-    color: var(--white);
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
   }
 
   h3 {

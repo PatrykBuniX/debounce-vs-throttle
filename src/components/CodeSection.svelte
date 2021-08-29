@@ -21,17 +21,19 @@ export function throttle(func: () => void, delay: number) {
 </script>
 
 <section id="code-section">
-  <h2>Implementation code</h2>
-  <div class="code-section-wrapper">
-    <div class="code-section debounce">
-      <h3>Debounce</h3>
-      <PrismCode code={debounceCode} />
+  <article>
+    <h2>Implementation code</h2>
+    <div class="code-section-wrapper">
+      <div class="code-section debounce">
+        <h3>Debounce</h3>
+        <PrismCode code={debounceCode} />
+      </div>
+      <div class="code-section throttle">
+        <h3>Throttle</h3>
+        <PrismCode code={throttleCode} />
+      </div>
     </div>
-    <div class="code-section throttle">
-      <h3>Throttle</h3>
-      <PrismCode code={throttleCode} />
-    </div>
-  </div>
+  </article>
 </section>
 
 <style type="text/scss">
@@ -41,11 +43,15 @@ export function throttle(func: () => void, delay: number) {
     align-items: center;
     margin: 0 auto;
     padding: 10rem 2rem;
-    max-width: 1440px;
     background-color: #404c52;
   }
 
+  article {
+    max-width: 1440px;
+  }
+
   h2 {
+    text-align: center;
     font-size: 4rem;
     color: var(--white);
   }
