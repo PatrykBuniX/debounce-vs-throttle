@@ -42,9 +42,7 @@
     <ol>
       <li>
         Declare <pre>debouncedTimeoutId</pre>
-        variable, we will assign timeout id (returned by
-        <pre>setTimeout</pre>
-        ) to.
+        variable, we will assign timeout id (returned by setTimeout) to.
       </li>
       <li>
         Declare <pre>debounce</pre>
@@ -70,7 +68,7 @@
     </ol>
     <h3 id="throttle">3. <span class="lightPink">Throttle</span></h3>
     <p>
-      Lets start with single sentence again: While user is interacting with the interface, call the
+      Let's start with single sentence again: While user is interacting with the interface, call the
       function <strong>once in a given period of time</strong>.
     </p>
     <p>
@@ -86,9 +84,7 @@
     <ol>
       <li>
         Declare <pre>throttleTimeoutId</pre>
-        variable, we will assign timeout id (returned by
-        <pre>setTimeout</pre>
-        ) to.
+        variable, we will assign timeout id (returned by setTimeout) to.
       </li>
       <li>
         Declare <pre>throttle</pre>
