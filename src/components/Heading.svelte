@@ -18,9 +18,16 @@
     font-style: italic;
     font-weight: bold;
     font-size: var(--fontSizeH1);
-    line-height: 6.3rem;
     color: var(--blue);
     text-shadow: 1px 1px 0px #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media screen and (min-width: 768px) {
+      line-height: 6.3rem;
+      display: block;
+    }
   }
 
   .subheader {
