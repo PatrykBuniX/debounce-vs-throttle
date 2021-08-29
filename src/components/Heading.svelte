@@ -1,9 +1,11 @@
-<h1>
-  <span class="header"
-    ><span class="green">Debounce</span> vs <span class="pink">Throttle</span></span
-  >
-  <span class="subheader">in JavaScript</span>
-</h1>
+<header>
+  <h1>
+    <span class="header"
+      ><span class="green">Debounce</span> vs <span class="pink">Throttle</span></span
+    >
+    <span class="subheader">in JavaScript</span>
+  </h1>
+</header>
 
 <style type="text/scss">
   h1 {
