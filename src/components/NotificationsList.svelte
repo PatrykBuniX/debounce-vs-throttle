@@ -6,7 +6,7 @@
   export let color: "green" | "blue" | "pink";
 </script>
 
-<ul class={color}>
+<ul class={`${color}Color`}>
   {#each notifications as item (item.id)}
     <li in:slide|local out:fade={{ duration: 500 }}>
       <h3>Debounced</h3>
@@ -37,7 +37,7 @@
       border: 1px solid var(--black);
     }
 
-    &.green {
+    &.greenColor {
       &::-webkit-scrollbar-thumb {
         background-color: var(--green);
       }
@@ -45,7 +45,7 @@
         background-color: var(--lightGreen);
       }
     }
-    &.blue {
+    &.blueColor {
       &::-webkit-scrollbar-thumb {
         background-color: var(--blue);
       }
@@ -53,7 +53,7 @@
         background-color: var(--lightBlue);
       }
     }
-    &.pink {
+    &.pinkColor {
       &::-webkit-scrollbar-thumb {
         background-color: var(--pink);
       }
