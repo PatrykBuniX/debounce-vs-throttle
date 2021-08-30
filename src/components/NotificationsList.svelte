@@ -4,12 +4,13 @@
 
   export let notifications: Notification[];
   export let color: "green" | "blue" | "pink";
+  export let title: string;
 </script>
 
 <ul class={`${color}Color`}>
   {#each notifications as item (item.id)}
     <li in:slide|local out:fade={{ duration: 500 }}>
-      <h3>Debounced</h3>
+      <h3>{title}</h3>
       <p>{item.text}</p>
     </li>
   {/each}

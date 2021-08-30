@@ -22,16 +22,16 @@
     {#if windowWidth >= 768 || compareWith === "debounce"}
       <div class="list-wrapper">
         <DelayInput name="Debounce" color="green" bind:delay={debounceDelay} />
-        <NotificationsList color="green" notifications={debouncedNotifications} />
+        <NotificationsList title="Debounced" color="green" notifications={debouncedNotifications} />
       </div>
     {/if}
     <div class="list-wrapper">
-      <NotificationsList color="blue" notifications={normalNotifications} />
+      <NotificationsList title="Normal" color="blue" notifications={normalNotifications} />
     </div>
     {#if windowWidth >= 768 || compareWith === "throttle"}
       <div class="list-wrapper">
         <DelayInput name="Throttle" color="pink" bind:delay={throttleDelay} />
-        <NotificationsList color="pink" notifications={throttledNotifications} />
+        <NotificationsList title="Throttled" color="pink" notifications={throttledNotifications} />
       </div>
     {/if}
   </div>
