@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { slide, fade } from "svelte/transition";
   import type { Notification } from "../types";
   import CompareWithSelection from "./CompareWithSelection.svelte";
+  import NotificationsList from "./NotificationsList.svelte";
 
   export let debouncedNotifications: Notification[];
   export let normalNotifications: Notification[];
@@ -32,25 +32,11 @@
             step="10"
           />
         </div>
-        <ul class="debounced">
-          {#each debouncedNotifications as item (item.id)}
-            <li in:slide|local out:fade={{ duration: 500 }}>
-              <h3>Debounced</h3>
-              <p>{item.text}</p>
-            </li>
-          {/each}
-        </ul>
+        <NotificationsList color="green" notifications={debouncedNotifications} />
       </div>
     {/if}
     <div class="list-wrapper">
-      <ul class="normal">
-        {#each normalNotifications as item (item.id)}
-          <li in:slide|local out:fade={{ duration: 500 }}>
-            <h3>Normal</h3>
-            <p>{item.text}</p>
-          </li>
-        {/each}
-      </ul>
+      <NotificationsList color="blue" notifications={normalNotifications} />
     </div>
     {#if windowWidth >= 768 || compareWith === "throttle"}
       <div class="list-wrapper">
@@ -66,14 +52,7 @@
             step="10"
           />
         </div>
-        <ul class="throttled">
-          {#each throttledNotifications as item (item.id)}
-            <li in:slide|local out:fade={{ duration: 500 }}>
-              <h3>Throttled</h3>
-              <p>{item.text}</p>
-            </li>
-          {/each}
-        </ul>
+        <NotificationsList color="pink" notifications={throttledNotifications} />
       </div>
     {/if}
   </div>
@@ -134,78 +113,6 @@
 
       @media screen and (min-width: 768px) {
         padding: 0.7rem 1.8rem;
-      }
-    }
-  }
-
-  ul {
-    width: 100%;
-    list-style-type: none;
-    height: 700px;
-    overflow-y: auto;
-    padding-right: 1rem;
-
-    &::-webkit-scrollbar {
-      width: 10px;
-      padding-left: 10px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background-color: none;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border-radius: var(--borderRadius);
-      border: 1px solid var(--black);
-    }
-
-    &.debounced {
-      &::-webkit-scrollbar-thumb {
-        background-color: var(--green);
-      }
-      li {
-        background-color: var(--lightGreen);
-      }
-    }
-    &.normal {
-      &::-webkit-scrollbar-thumb {
-        background-color: var(--blue);
-      }
-      li {
-        background-color: var(--lightBlue);
-      }
-    }
-    &.throttled {
-      &::-webkit-scrollbar-thumb {
-        background-color: var(--pink);
-      }
-      li {
-        background-color: var(--lightPink);
-      }
-    }
-
-    li {
-      width: 100%;
-      padding: 1rem;
-      box-shadow: var(--boxShadowBottom);
-      border-radius: var(--borderRadius);
-      margin: 2rem 0;
-
-      background-color: var(--green);
-      h3 {
-        font-weight: bold;
-        font-size: var(--fontSizeTextBig);
-        line-height: 2.4rem;
-        color: var(--black);
-      }
-
-      p {
-        margin-top: 1.5rem;
-        font-size: var(--fontSizeTextMedium);
-        line-height: 2.2rem;
-        color: var(--black);
-        width: 100%;
-        word-break: break-all;
       }
     }
   }
