@@ -1,16 +1,22 @@
 <script lang="ts">
   import PrismCode from "./PrismCode.svelte";
 
-  const debounceCode = `
-let debouncedTimeoutId: ReturnType<typeof setTimeout>;
-function debounce(func: () => void, delay: number) {
+  let withTypescript = false;
+
+  $: debounceCode = `
+let debouncedTimeoutId${withTypescript ? ": ReturnType<typeof setTimeout>" : ""};
+function debounce(func${withTypescript ? ": () => void" : ""}, delay${
+    withTypescript ? ": number" : ""
+  }) {
   clearTimeout(debouncedTimeoutId);
   debouncedTimeoutId = setTimeout(func, delay);
 }`;
 
-  const throttleCode = `
-let throttleTimeoutId: ReturnType<typeof setTimeout>;
-export function throttle(func: () => void, delay: number) {
+  $: throttleCode = `
+let throttleTimeoutId${withTypescript ? ": ReturnType<typeof setTimeout>" : ""};
+function throttle(func${withTypescript ? ": () => void" : ""}, delay${
+    withTypescript ? ": number" : ""
+  }) {
   if (throttleTimeoutId) return;
   func();
   throttleTimeoutId = setTimeout(() => {
@@ -24,6 +30,15 @@ export function throttle(func: () => void, delay: number) {
   <div class="bg-pattern" />
   <article>
     <h2>Implementation code</h2>
+    <div class="input-wrapper">
+      <input
+        bind:checked={withTypescript}
+        type="checkbox"
+        name="withTypescript"
+        id="withTypescript"
+      />
+      <label for="withTypescript">with typescript</label>
+    </div>
     <div class="code-wrapper">
       <div class="code debounce">
         <h3>Debounce</h3>
@@ -52,6 +67,21 @@ export function throttle(func: () => void, delay: number) {
   article {
     width: 100%;
     max-width: 1440px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .input-wrapper {
+    margin-top: 2rem;
+    font-size: var(--fontSizeText);
+    color: white;
+    display: flex;
+    align-items: center;
+
+    label {
+      margin-left: 1rem;
+    }
   }
 
   h2 {

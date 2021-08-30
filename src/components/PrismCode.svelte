@@ -1,20 +1,18 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import Prism from "prismjs";
 
   export let language: string = "javascript";
   export let code: string;
 
-  let ref: HTMLElement;
-  onMount(async () => {
-    Prism.highlightElement(ref);
-  });
+  $: {
+    code = Prism.highlight(code, Prism.languages[language], language);
+  }
 </script>
 
 <pre
   class="line-numbers">
-      <code bind:this={ref} class={`language-${language}`}>
-        {code.trim()}
+      <code class={`language-${language}`}>
+        {@html code.trim()}
       </code>
 </pre>
 
