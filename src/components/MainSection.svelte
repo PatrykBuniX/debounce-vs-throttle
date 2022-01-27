@@ -21,35 +21,42 @@
     return newNotifications;
   }
 
+  function setDebouncedNotifications(newNotification: Notification){
+    debouncedNotifications = [newNotification, ...debouncedNotifications];
+    setTimeout(() => {
+      debouncedNotifications = deleteNotification(debouncedNotifications, newNotification.id);
+    }, 5000);
+  }
+
+  function setThrottledNotifications(newNotification: Notification) {
+    throttledNotifications = [newNotification, ...throttledNotifications];
+    setTimeout(() => {
+      throttledNotifications = deleteNotification(throttledNotifications, newNotification.id);
+    }, 5000);
+  }
+
+  const debounced = debounce(setDebouncedNotifications, debounceDelay);
+  const throttled = throttle(setThrottledNotifications, throttleDelay);
+
   function handleInput() {
     const newNotification = {
       id: Math.random().toString(36).substr(2, 9),
       text: inputValue,
     };
 
-    debounce(() => {
-      debouncedNotifications = [newNotification, ...debouncedNotifications];
-      setTimeout(() => {
-        debouncedNotifications = deleteNotification(debouncedNotifications, newNotification.id);
-      }, 5000);
-    }, debounceDelay);
+    debounced(newNotification);
 
     normalNotifications = [newNotification, ...normalNotifications];
     setTimeout(() => {
       normalNotifications = deleteNotification(normalNotifications, newNotification.id);
     }, 5000);
 
-    throttle(() => {
-      throttledNotifications = [newNotification, ...throttledNotifications];
-      setTimeout(() => {
-        throttledNotifications = deleteNotification(throttledNotifications, newNotification.id);
-      }, 5000);
-    }, throttleDelay);
+    throttled(newNotification);
   }
 </script>
 
 <main>
-  <div class="bg-pattern" />
+  <div class="bg-pattern"></div>
   <div class="content">
     <Heading />
     <TypeInput bind:inputValue {handleInput} />
@@ -95,7 +102,6 @@
     text-align: center;
     font-size: var(--fontSizeText);
     line-height: 2rem;
-    text-align: center;
     color: #ffffff;
     width: 100%;
 

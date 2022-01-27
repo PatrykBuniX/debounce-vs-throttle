@@ -1,14 +1,28 @@
-let throttleTimeoutId: ReturnType<typeof setTimeout>;
-export function throttle(func: () => void, delay: number) {
-  if (throttleTimeoutId) return;
-  func();
-  throttleTimeoutId = setTimeout(() => {
-    throttleTimeoutId = undefined;
-  }, delay);
+export function throttle<T extends any[]>(
+  func: (...args: T) => void,
+  delay: number
+) {
+  let throttleTimeoutId: ReturnType<typeof setTimeout>;
+
+  return function (...args: T) {
+    if (throttleTimeoutId) return;
+
+    func(...args);
+
+    throttleTimeoutId = setTimeout(() => {
+      throttleTimeoutId = undefined;
+    }, delay);
+  };
 }
 
-let debouncedTimeoutId: ReturnType<typeof setTimeout>;
-export function debounce(func: () => void, delay: number) {
-  clearTimeout(debouncedTimeoutId);
-  debouncedTimeoutId = setTimeout(func, delay);
+export function debounce<T extends any[]>(
+  func: (...args: T) => void,
+  delay: number
+) {
+  let debouncedTimeoutId: ReturnType<typeof setTimeout>;
+
+  return function (...args: T) {
+    clearTimeout(debouncedTimeoutId);
+    debouncedTimeoutId = setTimeout(func.bind(null, args), delay);
+  };
 }

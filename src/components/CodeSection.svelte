@@ -3,35 +3,40 @@
 
   let withTypescript = false;
 
-  $: debounceCode = `
-let debouncedTimeoutId${withTypescript ? ": ReturnType<typeof setTimeout>" : ""};
+  $: ts = ((t:boolean, tsCode: string, jsCode?: string) => {
+    return t ? tsCode : jsCode || '';
+  }).bind(null, withTypescript);
 
-function debounce(func${withTypescript ? ": () => void" : ""}, delay${
-    withTypescript ? ": number" : ""
-  }) {
-  clearTimeout(debouncedTimeoutId);
-  debouncedTimeoutId = setTimeout(func, delay);
-}`;
+  $: debounceCode = `
+  function debounce${ts("<T extends any[]>")}(${ts('\n  ')}func${ts(": (...args: T) => void")},${ts('\n  ', ' ')}delay${ts(": number\n")}) {
+  let debouncedTimeoutId${ts(": ReturnType<typeof setTimeout>")};
+
+  return function (...args${ts(": T")}) {
+    clearTimeout(debouncedTimeoutId);
+    debouncedTimeoutId = setTimeout(func.bind(null, args), delay);
+  };
+}
+`;
 
   $: throttleCode = `
-let throttleTimeoutId${withTypescript ? ": ReturnType<typeof setTimeout>" : ""};
+  function throttle${ts("<T extends any[]>")}(${ts('\n  ')}func${ts(": (...args: T) => void")},${ts('\n  ', ' ')}delay${ts(": number\n")}) {
+  let throttleTimeoutId${ts(": ReturnType<typeof setTimeout>")};
 
-function throttle(func${withTypescript ? ": () => void" : ""}, delay${
-    withTypescript ? ": number" : ""
-  }) {
-  if (throttleTimeoutId) return;
+  return function (...args${ts(": T")}) {
+    if (throttleTimeoutId) return;
 
-  func();
+    func(...args);
 
-  throttleTimeoutId = setTimeout(() => {
-    throttleTimeoutId = undefined;
-  }, delay);
+    throttleTimeoutId = setTimeout(() => {
+      throttleTimeoutId = undefined;
+    }, delay);
+  };
 }
 `;
 </script>
 
 <section id="code-section">
-  <div class="bg-pattern" />
+  <div class="bg-pattern"></div>
   <article>
     <h2>Implementation code</h2>
     <div class="input-wrapper">
