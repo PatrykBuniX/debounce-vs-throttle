@@ -5,6 +5,7 @@
 
   $: debounceCode = `
 let debouncedTimeoutId${withTypescript ? ": ReturnType<typeof setTimeout>" : ""};
+
 function debounce(func${withTypescript ? ": () => void" : ""}, delay${
     withTypescript ? ": number" : ""
   }) {
@@ -14,11 +15,14 @@ function debounce(func${withTypescript ? ": () => void" : ""}, delay${
 
   $: throttleCode = `
 let throttleTimeoutId${withTypescript ? ": ReturnType<typeof setTimeout>" : ""};
+
 function throttle(func${withTypescript ? ": () => void" : ""}, delay${
     withTypescript ? ": number" : ""
   }) {
   if (throttleTimeoutId) return;
+
   func();
+
   throttleTimeoutId = setTimeout(() => {
     throttleTimeoutId = undefined;
   }, delay);
@@ -37,7 +41,7 @@ function throttle(func${withTypescript ? ": () => void" : ""}, delay${
         name="withTypescript"
         id="withTypescript"
       />
-      <label for="withTypescript">with typescript</label>
+      <label for="withTypescript">with <span class="blue">TypeScript</span></label>
     </div>
     <div class="code-wrapper">
       <div class="code debounce">
