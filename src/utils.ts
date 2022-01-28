@@ -23,6 +23,6 @@ export function debounce<T extends any[]>(
 
   return function (...args: T) {
     clearTimeout(debouncedTimeoutId);
-    debouncedTimeoutId = setTimeout(func.bind(null, args), delay);
+    debouncedTimeoutId = setTimeout(func.bind(null, ...args), delay);
   };
 }

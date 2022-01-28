@@ -5,6 +5,7 @@
   export let notifications: Notification[];
   export let color: "green" | "blue" | "pink";
   export let title: string;
+
 </script>
 
 <ul class={`${color}Color`}>

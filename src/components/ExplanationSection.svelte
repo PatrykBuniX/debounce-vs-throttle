@@ -23,101 +23,62 @@
       and
       <a class="lightPink" href="#throttle">throttle</a>!
     </p>
-    <h3 id="debounce">2. <span class="lightGreen">Debounce</span></h3>
-    <p>
-      Let your <strong>user stop interacting</strong> with the interface and then call the function - this
-      is how I would describe debouncing a function in a single sentence.
-    </p>
-    <p>
-      A practical use case of debounce is waiting until the user stops typing in input. This way you
-      are not disturbing the user in typing and for example not displaying results the user doesn't
-      want to see (If he wanted to see it, he would stop typing). It will reduce a number of
-      unnecessary, heavy calculations or API requests.
-    </p>
-    <p>
-      This is only one of many examples you can use debounce in - basically you will use it in event
-      handlers that run frequently (keyboard and mouse events, window resizing, etc.).
-    </p>
-    <p>Let me explain implementation code line by line:</p>
-    <ol>
-      <li>
-        Declare <pre>debouncedTimeoutId</pre>
-        variable, we will assign timeout id (returned by setTimeout) to.
-      </li>
-      <li>
-        Declare <pre>debounce</pre>
-        function with two parameters:
-        <ul>
-          <li>
-            <pre>func</pre>
-            - function which will be delayed
-          </li>
-          <li>
-            <pre>delay</pre>
-            - delay - time (number value in milliseconds) after function will execute when user stops
-            interacting
-          </li>
-        </ul>
-      </li>
-      <li>Clear timeout if it exists</li>
-      <li>
-        Assign new timeout id to <pre>debouncedTimeoutId</pre>
-        variable and run given function after given delay (unless user will cause the function to run
-        again - what will clear the timeout).
-      </li>
-    </ol>
-    <h3 id="throttle">3. <span class="lightPink">Throttle</span></h3>
-    <p>
-      Let's start with single sentence again: While the user is interacting with the interface, call the
-      function <strong>once in a given period of time</strong>.
-    </p>
-    <p>
-      Throttle is about blocking a function from running for a specified time - some time has to
-      elapse before it can be executed again. So, when the user is typing for a while, the function will
-      run only if it's not blocked.
-    </p>
-    <p>
-      With throttle, you can listen for continuous events (like scrolling or window resizing) and run
-      your function less frequently.
-    </p>
-    <p>Line by line explanation:</p>
-    <ol>
-      <li>
-        Declare <pre>throttleTimeoutId</pre>
-        variable, we will assign timeout id (returned by setTimeout) to.
-      </li>
-      <li>
-        Declare <pre>throttle</pre>
-        function with two parameters:
-        <ul>
-          <li>
-            <pre>func</pre>
-            - function which will be delayed
-          </li>
-          <li>
-            <pre>delay</pre>
-            - delay - time (number value in milliseconds) after function will be able to run again
-          </li>
-        </ul>
-      </li>
-      <li>If there is running timeout - return (do nothing)</li>
-      <li>Run the function.*</li>
-      <li>
-        Assign new timeout id to <pre>throttleTimeoutId</pre>
-        variable and reset it (assign undefined to it) after given delay.
-      </li>
-    </ol>
-    <p>
-      *Some people will put a function call inside timeout callback function, but in my opinion it's
-      better user experience when you run the function first and then block it, so you don't make the
-      user wait.
-    </p>
+    <div class="debounce">
+
+      <h3 id="debounce">2. <span class="lightGreen">Debounce</span></h3>
+      <p>
+        Let your <strong>user stop interacting</strong> with the interface and then call the function - this
+        is how I would describe debouncing a function in a single sentence.
+      </p>
+      <p>
+        A practical use case of debounce is waiting until the user stops typing in input. This way you
+        are not disturbing the user in typing and for example not displaying results the user doesn't
+        want to see (If he wanted to see it, he would stop typing). It will reduce a number of
+        unnecessary, heavy calculations or API requests.
+      </p>
+      <p>
+        This is only one of many examples you can use debounce in - basically you will use it in event
+        handlers that run frequently (keyboard and mouse events, window resizing, etc.).
+      </p>
+      <p>Let's check what's happening in the code.</p>
+      <p>We declare a <code>debounce</code> function which takes two arguments:</p>
+      <ul>
+        <li><code>func</code> - a function to debounce</li>
+        <li><code>delay</code> - time (in ms) after the function can be called</li>
+      </ul>
+      <p>We declare a <code>debouncedTimeoutId</code> variable, with initial value of undefined, which is "closed" in <code>debounce</code> function (this way we are making sure it cannot be accessed from the outside - <a class="lightBlue" href="https://javascript.info/closure" target="_blank" rel="noreferrer noopener">more about closure</a>). We will assign a value returned from <code>setTimeout</code> (id number) to it.</p>
+      <p>We return an anonymous function which will call our callback with the same arguments. The returned function clears the timeout with id of <code>debouncedTimeoutId</code> and sets another timeout storing its id in the same variable - this way our callback will run only if we stop calling debounced function for a given amount of time (<code>delay</code>). It won't be executed while we are spamming, because each time the event is fired, the timeout gets cleared.</p>
+    </div>
+    <div class="throttle">
+      <h3 id="throttle">3. <span class="lightPink">Throttle</span></h3>
+      <p>
+        Let's start with single sentence again: While the user is interacting with the interface, call the
+        function <strong>once in a given period of time</strong>.
+      </p>
+      <p>
+        Throttle is about blocking a function from running for a specified time - some time has to
+        elapse before it can be executed again. So, when the user is typing for a while, the function will
+        run only if it's not blocked.
+      </p>
+      <p>
+        With throttle, you can listen for continuous events (like scrolling or window resizing) and run
+        your function less frequently.
+      </p>
+      <p>This one might seem a bit more complicated, so let's dive into the code again:</p>
+      <p>We declare a <code>throttle</code> function which takes two arguments:</p>
+      <ul>
+        <li><code>func</code> - a function to throttle</li>
+        <li><code>delay</code> - time (in ms) after the function will be called</li>
+      </ul>
+      <p>We declare a <code>throttleTimeoutId</code> variable.
+      <p>We return a function which will call our callback with the same arguments. But before actually running a function, we are checking whether it's already waiting to be called. If it's waiting, do anything and let it execute first before being called again. After the function finished executing, block it for given amount (<code>delay</code>) of time.</p>
+    </div>
     <h3>4. <span class="lightBlue">Wrap it up!</span></h3>
     <p>
       I wanted to keep this article as short and simple as possible (I think that playing around
       with demo and reading implementation code is enough to understand these two techniques).
-      Remember that I'm not a programming expert (nobody is) and you might find
-      better implementation and explanation. I'm glad if it helped you understand/implement throttle
+      Keep in mind that it's my implementation and you might find better code and explanation.
+      I'm glad if it helped you understand/implement throttle
       or debounce. Thank you for visiting this article, keep learning!
     </p>
   </article>
@@ -163,13 +124,7 @@
   ol,
   ul {
     list-style-position: inside;
-    margin: 3rem 0;
-  }
-
-  ol, ul {
-    ol, ul{
-      margin: 1rem 2rem;
-    }
+    margin: 1rem 0;
   }
 
   ol > li {
@@ -189,11 +144,22 @@
     font-size: var(--fontSizeText);
   }
 
-  pre {
+  code {
     color: var(--blue);
     margin: 0 0.5rem;
     font-style: italic;
-    //color: var(--blue);
     display: inline-block;
   }
+
+  .debounce{
+    code{
+      color: var(--lightGreen);
+    }
+  }
+  .throttle{
+    code{
+      color: var(--lightPink);
+    }
+  }
+
 </style>

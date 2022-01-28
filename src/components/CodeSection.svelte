@@ -13,7 +13,7 @@
 
   return function (...args${ts(": T")}) {
     clearTimeout(debouncedTimeoutId);
-    debouncedTimeoutId = setTimeout(func.bind(null, args), delay);
+    debouncedTimeoutId = setTimeout(func.bind(null, ...args), delay);
   };
 }
 `;

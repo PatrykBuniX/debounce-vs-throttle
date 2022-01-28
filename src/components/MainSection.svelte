@@ -23,6 +23,7 @@
 
   function setDebouncedNotifications(newNotification: Notification){
     debouncedNotifications = [newNotification, ...debouncedNotifications];
+    console.log(debouncedNotifications);
     setTimeout(() => {
       debouncedNotifications = deleteNotification(debouncedNotifications, newNotification.id);
     }, 5000);
