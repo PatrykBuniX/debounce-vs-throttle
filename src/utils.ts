@@ -2,7 +2,7 @@ export function throttle<T extends any[]>(
   func: (...args: T) => void,
   delay: number
 ) {
-  let throttleTimeoutId: ReturnType<typeof setTimeout>;
+  let throttleTimeoutId: ReturnType<typeof setTimeout> | undefined;
 
   return function (...args: T) {
     if (throttleTimeoutId) return;

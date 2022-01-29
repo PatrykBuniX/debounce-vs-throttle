@@ -9,7 +9,7 @@
 
   $: debounceCode = `
   function debounce${ts("<T extends any[]>")}(${ts('\n  ')}func${ts(": (...args: T) => void")},${ts('\n  ', ' ')}delay${ts(": number\n")}) {
-  let debouncedTimeoutId${ts(": ReturnType<typeof setTimeout>")};
+  let debouncedTimeoutId${ts(": ReturnType<typeof setTimeout> | undefined")};
 
   return function (...args${ts(": T")}) {
     clearTimeout(debouncedTimeoutId);
