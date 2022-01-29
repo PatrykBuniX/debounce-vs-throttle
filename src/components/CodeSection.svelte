@@ -8,10 +8,10 @@
   }).bind(null, withTypescript);
 
   $: debounceCode = `
-  function debounce${ts("<T extends any[]>")}(${ts('\n  ')}func${ts(": (...args: T) => void")},${ts('\n  ', ' ')}delay${ts(": number\n")}) {
-  let debouncedTimeoutId${ts(": ReturnType<typeof setTimeout> | undefined")};
+  function debounce${ts("<T extends (...args: any[]) => any>")}(${ts('\n  ')}func${ts(": T")},${ts('\n  ', ' ')}delay${ts(": number\n")}) {
+  let debouncedTimeoutId${ts(": ReturnType<typeof setTimeout>")};
 
-  return function (...args${ts(": T")}) {
+  return function (...args${ts(": Parameters<T>")}) {
     clearTimeout(debouncedTimeoutId);
     debouncedTimeoutId = setTimeout(func.bind(null, ...args), delay);
   };
@@ -20,7 +20,7 @@
 
   $: throttleCode = `
   function throttle${ts("<T extends any[]>")}(${ts('\n  ')}func${ts(": (...args: T) => void")},${ts('\n  ', ' ')}delay${ts(": number\n")}) {
-  let throttleTimeoutId${ts(": ReturnType<typeof setTimeout>")};
+  let throttleTimeoutId${ts(": ReturnType<typeof setTimeout> | undefined")};
 
   return function (...args${ts(": T")}) {
     if (throttleTimeoutId) return;
