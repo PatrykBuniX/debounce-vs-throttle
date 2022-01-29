@@ -23,7 +23,6 @@
 
   function setDebouncedNotifications(newNotification: Notification){
     debouncedNotifications = [newNotification, ...debouncedNotifications];
-    console.log(debouncedNotifications);
     setTimeout(() => {
       debouncedNotifications = deleteNotification(debouncedNotifications, newNotification.id);
     }, 5000);
@@ -36,8 +35,8 @@
     }, 5000);
   }
 
-  const debounced = debounce(setDebouncedNotifications, debounceDelay);
-  const throttled = throttle(setThrottledNotifications, throttleDelay);
+  $: debounced = debounce(setDebouncedNotifications, debounceDelay);
+  $: throttled = throttle(setThrottledNotifications, throttleDelay);
 
   function handleInput() {
     const newNotification = {
