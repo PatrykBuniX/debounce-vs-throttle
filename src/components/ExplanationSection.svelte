@@ -71,7 +71,7 @@
         <li><code>delay</code> - time (in ms) after the function will be called</li>
       </ul>
       <p>We declare a <code>throttleTimeoutId</code> variable.
-      <p>We return a function which will call our callback with the same arguments. But before actually running a function, we are checking whether it's already waiting to be called. If it's waiting, do anything and let it execute first before being called again. After the function finished executing, block it for given amount (<code>delay</code>) of time.</p>
+      <p>We return a function which will call our callback with the same arguments. But before actually running a function, we are checking whether it's already waiting to be called. If it's waiting, do nothing and let it execute first before being called again. After the function finished executing, block it for given amount (<code>delay</code>) of time.</p>
     </div>
     <h3>4. <span class="lightBlue">Wrap it up!</span></h3>
     <p>
