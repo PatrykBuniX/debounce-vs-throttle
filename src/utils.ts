@@ -7,9 +7,8 @@ export function throttle<T extends any[]>(
   return function (...args: T) {
     if (throttleTimeoutId) return;
 
-    func(...args);
-
     throttleTimeoutId = setTimeout(() => {
+      func(...args);
       throttleTimeoutId = undefined;
     }, delay);
   };
